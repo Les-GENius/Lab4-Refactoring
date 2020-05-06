@@ -2,15 +2,15 @@ package ch.heigvd.gen;
 
 
 public class Product {
-    enum Color {blue, red, yellow, no_color};
-    public static final int SIZE_NOT_APPLICABLE = -1;
+    static enum Color {blue, red, yellow, no_color};
+    static enum Size {SIZE_NOT_APPLICABLE, XS, S, M, L, XL, XXL};
     private String code;
     private Color color;
-    private int size;
+    private Size size;
     private double price;
     private String currency;
 
-    public Product(String code, Color color, int size, double price, String currency) {
+    public Product(String code, Color color, Size size, double price, String currency) {
         this.code = code;
         this.color = color;
         this.size = size;
@@ -22,13 +22,11 @@ public class Product {
         return code;
     }
 
-    public String getColor() {
-        return color.toString();
+    public Color getColor() {
+        return color;
     }
 
-    public int getSize() {
-        return size;
-    }
+    public Size getSize() { return size; }
 
     public double getPrice() {
         return price;
