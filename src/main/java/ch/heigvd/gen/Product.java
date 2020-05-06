@@ -35,4 +35,27 @@ public class Product {
     public String getCurrency() {
         return currency;
     }
+
+    public String toString(){
+        StringBuilder result = new StringBuilder();
+        result.append("{");
+        result.append("\"code\": \"");
+        result.append(code);
+        result.append("\", ");
+        result.append("\"color\": \"");
+        result.append(color);
+        result.append("\", ");
+        if (size != (Size.SIZE_NOT_APPLICABLE)) {
+            result.append("\"size\": \"");
+            result.append(size);
+            result.append("\", ");
+        }
+        result.append("\"price\": ");
+        result.append(price);
+        result.append(", ");
+        result.append("\"currency\": \"");
+        result.append(currency);
+        result.append("\"}, ");
+        return result.toString();
+    }
 }
