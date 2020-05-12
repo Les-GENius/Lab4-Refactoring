@@ -57,7 +57,10 @@ public class Product {
         return currency;
     }
 
-    void getProductContent(StringBuffer sb) {
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
         sb.append("{");
         sb.append("\"code\": \"");
         sb.append(getCode());
@@ -78,5 +81,7 @@ public class Product {
         sb.append("\"currency\": \"");
         sb.append(getCurrency());
         sb.append("\"}, ");
+
+        return sb.toString();
     }
 }
