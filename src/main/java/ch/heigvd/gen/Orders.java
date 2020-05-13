@@ -20,16 +20,13 @@ public class Orders {
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer("{\"orders\": [");
+        StringBuilder sb = new StringBuilder("{\"orders\": [");
 
-        for (int i = 0; i < getOrdersCount(); i++) {
-            Order order = getOrder(i);
+        for (Order order : orders)
             sb.append(order);
-        }
 
-        if (getOrdersCount() > 0) {
+        if (getOrdersCount() > 0)
             sb.delete(sb.length() - 2, sb.length());
-        }
 
         return sb.append("]}").toString();
     }
