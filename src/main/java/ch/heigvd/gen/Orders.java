@@ -29,10 +29,8 @@ public class Orders {
             sb.append(order.getOrderId());
             sb.append(", ");
             sb.append("\"products\": [");
-            for (int j = 0; j < order.getProductsCount(); j++) {
-                sb.append(order.getProduct(j));
-            }
-
+            sb.append(order);
+            
             if (order.getProductsCount() > 0) {
                 sb.delete(sb.length() - 2, sb.length());
             }

@@ -26,4 +26,13 @@ public class Order {
     public void AddProduct(Product product) {
         products.add(product);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Product product : products) {
+            sb.append(product);
+        }
+        return sb.toString();
+    }
 }
