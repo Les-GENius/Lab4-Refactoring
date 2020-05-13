@@ -24,19 +24,7 @@ public class Orders {
 
         for (int i = 0; i < getOrdersCount(); i++) {
             Order order = getOrder(i);
-            sb.append("{");
-            sb.append("\"id\": ");
-            sb.append(order.getOrderId());
-            sb.append(", ");
-            sb.append("\"products\": [");
             sb.append(order);
-            
-            if (order.getProductsCount() > 0) {
-                sb.delete(sb.length() - 2, sb.length());
-            }
-
-            sb.append("]");
-            sb.append("}, ");
         }
 
         if (getOrdersCount() > 0) {
