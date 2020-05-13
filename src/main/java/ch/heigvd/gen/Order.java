@@ -36,9 +36,8 @@ public class Order {
         sb.append(", ");
         sb.append("\"products\": [");
 
-        for (Product product : products) {
+        for (Product product : products)
             sb.append(product);
-        }
 
         if (products.size() > 0) {
             sb.delete(sb.length() - 2, sb.length());
