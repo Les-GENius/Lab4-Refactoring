@@ -20,7 +20,7 @@ public class Orders {
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer("{\"orders\": [");
+        StringBuilder sb = new StringBuilder("{\"orders\": [");
 
         for (Order order : orders)
             sb.append(order);

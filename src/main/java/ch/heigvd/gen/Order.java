@@ -29,22 +29,15 @@ public class Order {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        sb.append("\"id\": ");
-        sb.append(id);
-        sb.append(", ");
-        sb.append("\"products\": [");
+        StringBuilder sb = new StringBuilder("{\"id\": " + id + ", " + "\"products\": [");
 
         for (Product product : products)
             sb.append(product);
 
-        if (products.size() > 0) {
+        if (products.size() > 0)
             sb.delete(sb.length() - 2, sb.length());
-        }
 
-        sb.append("]");
-        sb.append("}, ");
+        sb.append("]}, ");
 
         return sb.toString();
     }
