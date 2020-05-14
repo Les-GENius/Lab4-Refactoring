@@ -1,18 +1,18 @@
 package ch.heigvd.gen;
 
-public class OrdersWriter {
+public class OrdersWriter implements IWriter{
     private Orders orders;
 
     public OrdersWriter(Orders orders) {
         this.orders = orders;
     }
 
-    public String getContents() {
-        OrderWriter orderWriter = new OrderWriter();
+    @Override
+    public String getContent() {
         StringBuffer sb = new StringBuffer("{\"orders\": [");
 
         for (int i = 0; i < orders.getOrdersCount(); i++) {
-            orderWriter.getOrderContent(sb, orders.getOrder(i));
+            sb.append(new OrderWriter(orders.getOrder(i)).getContent());
         }
 
         if (orders.getOrdersCount() > 0) {
@@ -21,7 +21,4 @@ public class OrdersWriter {
 
         return sb.append("]}").toString();
     }
-
-
-
 }

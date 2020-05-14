@@ -1,16 +1,23 @@
 package ch.heigvd.gen;
 
-public class OrderWriter {
+public class OrderWriter implements IWriter {
 
-    public void getOrderContent(StringBuffer sb, Order order) {
-        ProductWriter productWriter = new ProductWriter();
+    private Order order;
+
+    public OrderWriter(Order order){
+        this.order = order;
+    }
+
+    @Override
+    public String getContent() {
+        StringBuilder sb = new StringBuilder();
         sb.append("{");
         sb.append("\"id\": ");
         sb.append(order.getOrderId());
         sb.append(", ");
         sb.append("\"products\": [");
         for (int j = 0; j < order.getProductsCount(); j++) {
-            productWriter.getProductContent(sb, order.getProduct(j));
+            sb.append(new ProductWriter(order.getProduct(j)).getContent());
         }
 
         if (order.getProductsCount() > 0) {
@@ -19,5 +26,6 @@ public class OrderWriter {
 
         sb.append("]");
         sb.append("}, ");
+        return sb.toString();
     }
 }

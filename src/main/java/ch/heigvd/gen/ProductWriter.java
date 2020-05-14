@@ -1,8 +1,16 @@
 package ch.heigvd.gen;
 
-public class ProductWriter {
+public class ProductWriter implements IWriter{
 
-    public void getProductContent(StringBuffer sb, Product product) {
+    private Product product;
+
+    ProductWriter(Product product){
+        this.product = product;
+    }
+
+    @Override
+    public String getContent() {
+        StringBuilder sb = new StringBuilder();
         sb.append("{");
         sb.append("\"code\": \"");
         sb.append(product.getCode());
@@ -23,5 +31,6 @@ public class ProductWriter {
         sb.append("\"currency\": \"");
         sb.append(product.getCurrency());
         sb.append("\"}, ");
+        return sb.toString();
     }
 }
