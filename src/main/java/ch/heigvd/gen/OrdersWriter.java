@@ -1,9 +1,12 @@
 package ch.heigvd.gen;
 
-public class OrdersWriter implements IWriter{
-    private Orders orders;
+import java.util.List;
 
-    public OrdersWriter(Orders orders) {
+public class OrdersWriter implements IWriter{
+
+    private List<Order> orders;
+
+    public OrdersWriter(List<Order> orders) {
         this.orders = orders;
     }
 
@@ -11,11 +14,11 @@ public class OrdersWriter implements IWriter{
     public String getContent() {
         StringBuffer sb = new StringBuffer("{\"orders\": [");
 
-        for (int i = 0; i < orders.getOrdersCount(); i++) {
-            sb.append(new OrderWriter(orders.getOrder(i)).getContent());
+        for (int i = 0; i < orders.size(); i++) {
+            sb.append(new OrderWriter(orders.get(i)).getContent());
         }
 
-        if (orders.getOrdersCount() > 0) {
+        if (orders.size() > 0) {
             sb.delete(sb.length() - 2, sb.length());
         }
 
