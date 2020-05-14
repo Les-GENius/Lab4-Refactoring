@@ -30,7 +30,7 @@ public class ProductWriter implements IWriter{
         sb.append(", ");
         sb.append("\"currency\": \"");
         sb.append(product.getCurrency());
-        sb.append("\"}, ");
+        sb.append("\"}");
         return sb.toString();
     }
 }

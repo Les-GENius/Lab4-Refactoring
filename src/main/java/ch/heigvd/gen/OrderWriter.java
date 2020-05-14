@@ -18,14 +18,14 @@ public class OrderWriter implements IWriter {
         sb.append("\"products\": [");
         for (int j = 0; j < order.getProductsCount(); j++) {
             sb.append(new ProductWriter(order.getProduct(j)).getContent());
+            sb.append(", ");
         }
 
         if (order.getProductsCount() > 0) {
             sb.delete(sb.length() - 2, sb.length());
         }
 
-        sb.append("]");
-        sb.append("}, ");
+        sb.append("]}");
         return sb.toString();
     }
 }

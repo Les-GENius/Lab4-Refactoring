@@ -16,6 +16,7 @@ public class OrdersWriter implements IWriter{
 
         for (int i = 0; i < orders.size(); i++) {
             sb.append(new OrderWriter(orders.get(i)).getContent());
+            sb.append(", ");
         }
 
         if (orders.size() > 0) {
