@@ -1,10 +1,10 @@
 package ch.heigvd.gen;
 
-public class ProductWriter implements IWriter{
+public class ProductJsonWriter implements IWriter{
 
     private Product product;
 
-    ProductWriter(Product product){
+    ProductJsonWriter(Product product){
         this.product = product;
     }
 
@@ -30,7 +30,7 @@ public class ProductWriter implements IWriter{
         sb.append(", ");
         sb.append("\"currency\": \"");
         sb.append(product.getCurrency());
-        sb.append("\"}, ");
+        sb.append("\"}");
         return sb.toString();
     }
 }
