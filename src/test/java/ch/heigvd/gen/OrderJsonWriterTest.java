@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class OrderWriterTest {
+public class OrderJsonWriterTest {
 
     Order order = new Order(111);
     Product product = new Product("Shirt", Color.BLUE, Size.M, 2.99, "TWD");
@@ -17,7 +17,7 @@ public class OrderWriterTest {
 
     @Test
     public void noProduct(){
-        assertEquals("{\"id\": 0, \"products\": []}", new OrderWriter(new Order(0)).getContent());
+        assertEquals("{\"id\": 0, \"products\": []}", new OrderJsonWriter(new Order(0)).getContent());
     }
 
     @Test
@@ -27,7 +27,7 @@ public class OrderWriterTest {
         String product1Json = "{\"code\": \"Shirt\", \"color\": \"blue\", \"size\": \"M\", \"price\": 2.99, \"currency\": \"TWD\"}";
         String product2Json = "{\"code\": \"Jeans\", \"color\": \"blue\", \"size\": \"M\", \"price\": 32.99, \"currency\": \"TWD\"}";
         String order111Json = JsonOrder111WithProduct(product1Json + ", " + product2Json);
-        assertEquals(order111Json,new OrderWriter(order).getContent());
+        assertEquals(order111Json,new OrderJsonWriter(order).getContent());
     }
 
     private String JsonOrder111WithProduct(String productJson) {

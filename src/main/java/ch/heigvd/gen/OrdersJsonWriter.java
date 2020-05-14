@@ -2,11 +2,11 @@ package ch.heigvd.gen;
 
 import java.util.List;
 
-public class OrdersWriter implements IWriter{
+public class OrdersJsonWriter implements IWriter{
 
     private List<Order> orders;
 
-    public OrdersWriter(List<Order> orders) {
+    public OrdersJsonWriter(List<Order> orders) {
         this.orders = orders;
     }
 
@@ -15,7 +15,7 @@ public class OrdersWriter implements IWriter{
         StringBuffer sb = new StringBuffer("{\"orders\": [");
 
         for (int i = 0; i < orders.size(); i++) {
-            sb.append(new OrderWriter(orders.get(i)).getContent());
+            sb.append(new OrderJsonWriter(orders.get(i)).getContent());
             sb.append(", ");
         }
 

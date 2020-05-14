@@ -1,10 +1,10 @@
 package ch.heigvd.gen;
 
-public class OrderWriter implements IWriter {
+public class OrderJsonWriter implements IWriter {
 
     private Order order;
 
-    public OrderWriter(Order order){
+    public OrderJsonWriter(Order order){
         this.order = order;
     }
 
@@ -17,7 +17,7 @@ public class OrderWriter implements IWriter {
         sb.append(", ");
         sb.append("\"products\": [");
         for (int j = 0; j < order.getProductsCount(); j++) {
-            sb.append(new ProductWriter(order.getProduct(j)).getContent());
+            sb.append(new ProductJsonWriter(order.getProduct(j)).getContent());
             sb.append(", ");
         }
 

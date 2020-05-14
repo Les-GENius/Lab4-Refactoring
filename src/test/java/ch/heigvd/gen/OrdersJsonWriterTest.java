@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class OrdersWriterTest {
+public class OrdersJsonWriterTest {
     List<Order> orders = new ArrayList<Order>();
     Order order111 = new Order(111);
 
@@ -19,13 +19,13 @@ public class OrdersWriterTest {
 
     @Test
     public void NoOrder() {
-        assertEquals("{\"orders\": []}", new OrdersWriter(new ArrayList<Order>()).getContent());
+        assertEquals("{\"orders\": []}", new OrdersJsonWriter(new ArrayList<Order>()).getContent());
     }
 
     @Test
     public void OneOrder() {
         String order111 = "{\"id\": 111, \"products\": []}";
-        assertEquals("{\"orders\": [" + order111 + "]}", new OrdersWriter(orders).getContent());
+        assertEquals("{\"orders\": [" + order111 + "]}", new OrdersJsonWriter(orders).getContent());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class OrdersWriterTest {
 
         String order111Json = JsonOrder111WithProduct("");
         String order222Json = "{\"id\": 222, \"products\": []}";
-        assertEquals("{\"orders\": [" + order111Json + ", " + order222Json + "]}", new OrdersWriter(orders).getContent());
+        assertEquals("{\"orders\": [" + order111Json + ", " + order222Json + "]}", new OrdersJsonWriter(orders).getContent());
     }
 
     @Test
@@ -42,7 +42,7 @@ public class OrdersWriterTest {
         order111.AddProduct(new Product("Shirt", Color.BLUE, Size.M, 2.99, "TWD"));
 
         String order111Json = JsonOrder111WithProduct("{\"code\": \"Shirt\", \"color\": \"blue\", \"size\": \"M\", \"price\": 2.99, \"currency\": \"TWD\"}");
-        assertEquals("{\"orders\": [" + order111Json + "]}", new OrdersWriter(orders).getContent());
+        assertEquals("{\"orders\": [" + order111Json + "]}", new OrdersJsonWriter(orders).getContent());
     }
 
     @Test
@@ -50,7 +50,7 @@ public class OrdersWriterTest {
         order111.AddProduct(new Product("Pot", Color.RED, Size.SIZE_NOT_APPLICABLE, 16.50, "SGD"));
 
         String order111Json = JsonOrder111WithProduct("{\"code\": \"Pot\", \"color\": \"red\", \"price\": 16.5, \"currency\": \"SGD\"}");
-        assertEquals("{\"orders\": [" + order111Json + "]}", new OrdersWriter(orders).getContent());
+        assertEquals("{\"orders\": [" + order111Json + "]}", new OrdersJsonWriter(orders).getContent());
     }
 
     private String JsonOrder111WithProduct(String productJson) {
